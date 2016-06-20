@@ -1,5 +1,5 @@
 var express = require('express');
-var handlebars = require('express3-handlebars').create({ defaultLayout:'main'}); 
+
 var fortune = require('./lib/fortune.js');
 
 var app = express();
@@ -19,9 +19,11 @@ app.set('view engine', '.hbs');
 //   defaultLayout: 'main',
 //   extname: '.handlebars'
 // }));
-
+// 
+var handlebars = require('express3-handlebars').create({ defaultLayout:'main'}); 
+// app.set('views', './views');
 app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
+app.set('views engine', 'handlebars');
                                 
                                                        
 app.use(express.static(__dirname + '/public'));
@@ -65,7 +67,7 @@ app.use(function (err, req, res, next){
 });
 
 app.listen(app.get('port'), function () {
-	console.log('hahahah');
+	// console.log('hahahah');
 	console.log('Express started on http://localhost:'
 		+ app.get('port') + '; press Ctrl-C to terminate...')
 });
