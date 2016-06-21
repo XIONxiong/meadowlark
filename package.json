@@ -19,5 +19,9 @@
     "url": "https://github.com/XIONxiong/meadowlark/issues"
   },
   "homepage": "https://github.com/XIONxiong/meadowlark#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
 }

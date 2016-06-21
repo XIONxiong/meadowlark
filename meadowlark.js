@@ -31,7 +31,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', process.env.PORT || 3000);
 
 
-
+//中间件，测试路由
+app.use(function (req, res, next) {
+	res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+	next();
+})
 //路由
 app.get('/', function (req, res) {
 	// res.type('text/plain');
@@ -44,7 +48,10 @@ app.get('/about', function (req, res) {
 	// res.send('About Meadowlark Travel');
 	
 
-	res.render('about', { fortune:fortune.getFortune() });
+	res.render('about', { 
+		fortune:fortune.getFortune(),
+		pageTestScript:'/qa/tests-about.js'
+		 });
 });
 
 //Example for 404 ..not found
